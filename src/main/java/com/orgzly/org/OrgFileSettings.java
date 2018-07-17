@@ -6,10 +6,10 @@ package com.orgzly.org;
  */
 public class OrgFileSettings {
     public static final String TITLE = "#+TITLE:";
-//    public static final String FILE_TAGS = "#+FILETAGS:";
+    public static final String FILE_TAGS = "#+FILETAGS:";
 
     private String title;
-//    private List<String> fileTags = new ArrayList<>();
+    private List<String> fileTags = new ArrayList<>();
 
 
     /**
@@ -51,6 +51,10 @@ public class OrgFileSettings {
                 setTitle(val);
             }
 
+            settingFound = true;
+        } else if(line.startsWith(FILE_TAGS)) {
+            String[] tags = line.substring(FILE_TAGS.length()).split(" ");
+            fileTags.addAll(Arrays.asList(tags));
             settingFound = true;
         }
 
